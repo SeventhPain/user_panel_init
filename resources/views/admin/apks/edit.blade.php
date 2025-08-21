@@ -43,11 +43,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="file" class="form-label">APK File</label>
-                            <input type="file" class="form-control" id="file" name="file">
-                            <div class="mt-2">
-                                <p class="text-muted">Current file: {{ basename($apk->file_path) }}</p>
-                            </div>
+                            <label for="file_path" class="form-label">APK Download Link</label>
+                            <input type="url" name="file_path" id="file_path" class="form-control"
+                                value="{{ old('file_path', $apk->file_path ?? '') }}" required>
+                            <small class="text-muted">Example: https://yourapklink/application_name.apk</small>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Update</button>

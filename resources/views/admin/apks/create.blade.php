@@ -46,10 +46,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="file" class="form-label">APK File</label>
-                            <input type="file" class="form-control @error('file') is-invalid @enderror" id="file" name="file" required accept=".apk">
-                            @error('file')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            <label for="file_path" class="form-label">APK Download Link</label>
+                            <input type="url" name="file_path" id="file_path" class="form-control"
+                                value="{{ old('file_path', $apk->file_path ?? '') }}" required>
+                            <small class="text-muted">Example: https://yourapklink/application_name.apk</small>
                         </div>
+
 
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a href="{{ route('admin.apks.index') }}" class="btn btn-secondary">Cancel</a>

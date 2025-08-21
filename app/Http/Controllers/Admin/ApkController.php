@@ -1,20 +1,16 @@
 <?php
 
-
-// app/Http/Controllers/Admin/ApkController.php
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Apk;
 use App\Models\ApkType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ApkController extends Controller
 {
     public function index()
     {
-        // $apks = Apk::with('type')->get();
         $apks = Apk::with('type')->paginate(10);
         return view('admin.apks.index', compact('apks'));
     }
@@ -33,10 +29,8 @@ class ApkController extends Controller
             'apk_type_id' => 'required|exists:apk_types,id',
             'package_name' => 'required|string|max:255',
             'version' => 'required|string|max:50',
-            'file' => 'required|file|mimes:apk|max:120240',
+            'file_path' => 'required|url', // must be a valid URL
         ]);
-
-        $filePath = $request->file('file')->store('apks/files', 'public');
 
         Apk::create([
             'name' => $request->name,
@@ -44,7 +38,7 @@ class ApkController extends Controller
             'apk_type_id' => $request->apk_type_id,
             'package_name' => $request->package_name,
             'version' => $request->version,
-            'file_path' => $filePath,
+            'file_path' => $request->file_path, // direct link
         ]);
 
         return redirect()->route('admin.apks.index')
@@ -65,14 +59,8 @@ class ApkController extends Controller
             'apk_type_id' => 'required|exists:apk_types,id',
             'package_name' => 'required|string|max:255',
             'version' => 'required|string|max:50',
-            'file' => 'nullable|file|mimes:apk|max:10240',
+            'file_path' => 'required|url', // still must be a URL
         ]);
-
-        $filePath = $apk->file_path;
-        if ($request->hasFile('file')) {
-            Storage::disk('public')->delete($filePath);
-            $filePath = $request->file('file')->store('apks/files', 'public');
-        }
 
         $apk->update([
             'name' => $request->name,
@@ -80,7 +68,7 @@ class ApkController extends Controller
             'apk_type_id' => $request->apk_type_id,
             'package_name' => $request->package_name,
             'version' => $request->version,
-            'file_path' => $filePath,
+            'file_path' => $request->file_path,
         ]);
 
         return redirect()->route('admin.apks.index')
@@ -89,9 +77,7 @@ class ApkController extends Controller
 
     public function destroy(Apk $apk)
     {
-        Storage::disk('public')->delete($apk->file_path);
         $apk->delete();
-
         return redirect()->route('admin.apks.index')
             ->with('success', 'APK deleted successfully.');
     }
