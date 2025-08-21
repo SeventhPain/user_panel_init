@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apk;
 use App\Models\Book;
 use App\Models\Pdf;
-use App\Models\Phone;
+use App\Models\PhoneNumber;
 use Illuminate\Http\Request;
 
 class DataController extends Controller
@@ -41,7 +41,7 @@ class DataController extends Controller
 
     public function phones()
     {
-        $phones = Phone::all();
+        $phones = PhoneNumber::all();
         return response()->json([
             'success' => true,
             'data' => $phones

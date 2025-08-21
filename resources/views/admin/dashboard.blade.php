@@ -21,5 +21,14 @@
             </div>
         </div>
     </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-secondary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">APKs</h5>
+                <p class="card-text">{{ \App\Models\PhoneNumber::count() }} Phone Numbers</p>
+                <a href="{{ route('admin.phone-numbers.index') }}" class="text-white">View all</a>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
