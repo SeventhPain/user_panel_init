@@ -30,16 +30,43 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="number" class="form-label">Number</label>
+                            <label for="telegram" class="form-label">Telegram</label>
                             <input 
                                 type="text" 
-                                class="form-control @error('number') is-invalid @enderror" 
-                                id="number" 
-                                name="number" 
-                                value="{{ old('number', $phoneNumber->number) }}" 
-                                required
+                                class="form-control @error('telegram') is-invalid @enderror" 
+                                id="telegram" 
+                                name="telegram" 
+                                value="{{ old('telegram', $phoneNumber->telegram) }}"
                             >
-                            @error('number')
+                            @error('telegram')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="viber" class="form-label">Viber</label>
+                            <input 
+                                type="text" 
+                                class="form-control @error('viber') is-invalid @enderror" 
+                                id="viber" 
+                                name="viber" 
+                                value="{{ old('viber', $phoneNumber->viber) }}"
+                            >
+                            @error('viber')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="contact_url" class="form-label">Contact URL</label>
+                            <input 
+                                type="url" 
+                                class="form-control @error('contact_url') is-invalid @enderror" 
+                                id="contact_url" 
+                                name="contact_url" 
+                                value="{{ old('contact_url', $phoneNumber->contact_url) }}"
+                            >
+                            @error('contact_url')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

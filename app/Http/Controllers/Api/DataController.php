@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apk;
 use App\Models\Book;
 use App\Models\Pdf;
+use App\Models\BookType;
 use App\Models\PhoneNumber;
 use Illuminate\Http\Request;
 
@@ -45,6 +46,15 @@ class DataController extends Controller
         return response()->json([
             'success' => true,
             'data' => $phones
+        ]);
+    }
+
+    public function booktypes()
+    {
+        $booktypes = BookType::all();
+        return response()->json([
+            'success' => true,
+            'data' => $booktypes
         ]);
     }
 }

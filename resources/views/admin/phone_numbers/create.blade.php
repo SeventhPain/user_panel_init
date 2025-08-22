@@ -13,6 +13,7 @@
                     <form method="POST" action="{{ route('admin.phone-numbers.store') }}">
                         @csrf
 
+                        {{-- Name --}}
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input 
@@ -28,21 +29,52 @@
                             @enderror
                         </div>
 
+                        {{-- Telegram --}}
                         <div class="mb-3">
-                            <label for="number" class="form-label">Number</label>
+                            <label for="telegram" class="form-label">Telegram</label>
                             <input 
                                 type="text" 
-                                class="form-control @error('number') is-invalid @enderror" 
-                                id="number" 
-                                name="number" 
-                                value="{{ old('number') }}" 
-                                required
+                                class="form-control @error('telegram') is-invalid @enderror" 
+                                id="telegram" 
+                                name="telegram" 
+                                value="{{ old('telegram') }}"
                             >
-                            @error('number')
+                            @error('telegram')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
+                        {{-- Viber --}}
+                        <div class="mb-3">
+                            <label for="viber" class="form-label">Viber</label>
+                            <input 
+                                type="text" 
+                                class="form-control @error('viber') is-invalid @enderror" 
+                                id="viber" 
+                                name="viber" 
+                                value="{{ old('viber') }}"
+                            >
+                            @error('viber')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        {{-- Contact URL --}}
+                        <div class="mb-3">
+                            <label for="contact_url" class="form-label">Contact URL</label>
+                            <input 
+                                type="url" 
+                                class="form-control @error('contact_url') is-invalid @enderror" 
+                                id="contact_url" 
+                                name="contact_url" 
+                                value="{{ old('contact_url') }}"
+                            >
+                            @error('contact_url')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        {{-- Description --}}
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea 
@@ -56,6 +88,7 @@
                             @enderror
                         </div>
 
+                        {{-- Buttons --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a href="{{ route('admin.phone-numbers.index') }}" class="btn btn-secondary">Cancel</a>
                     </form>

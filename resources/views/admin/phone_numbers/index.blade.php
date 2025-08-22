@@ -19,7 +19,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Number</th>
+                    <th>Telegram</th>
+                    <th>Viber</th>
+                    <th>Contact URL</th>
                     <th>Description</th>
                     <th>Actions</th>
                 </tr>
@@ -29,7 +31,13 @@
                 <tr>
                     <td>{{ $phoneNumber->id }}</td>
                     <td>{{ $phoneNumber->name }}</td>
-                    <td>{{ $phoneNumber->number }}</td>
+                    <td>{{ $phoneNumber->telegram }}</td>
+                    <td>{{ $phoneNumber->viber }}</td>
+                    <td>
+                        @if($phoneNumber->contact_url)
+                            <a href="{{ $phoneNumber->contact_url }}" target="_blank">{{ $phoneNumber->contact_url }}</a>
+                        @endif
+                    </td>
                     <td>{{ Str::limit($phoneNumber->description, 50) }}</td>
                     <td>
                         <a href="{{ route('admin.phone-numbers.edit', $phoneNumber->id) }}" class="btn btn-sm btn-warning">Edit</a>

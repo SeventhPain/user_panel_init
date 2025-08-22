@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class PhoneNumber extends Model
 {
-    protected $fillable = ['name', 'number', 'description'];
+    protected $fillable = [
+        'name',
+        'telegram',
+        'viber',
+        'contact_url',
+        'description',
+    ];
 }

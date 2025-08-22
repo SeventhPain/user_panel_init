@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('phone_numbers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('number');
+            $table->string('telegram')->nullable();
+            $table->string('viber')->nullable();
+            $table->string('contact_url')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

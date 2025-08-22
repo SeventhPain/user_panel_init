@@ -22,14 +22,17 @@ class PhoneNumberController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'number' => 'required|string|max:20',
+            'name'        => 'required|string|max:255',
+            'telegram'    => 'nullable|url|max:255',
+            'viber'       => 'nullable|url|max:255',
+            'contact_url' => 'nullable|url|max:255',
             'description' => 'nullable|string',
         ]);
 
         PhoneNumber::create($request->all());
 
-        return redirect()->route('admin.phone-numbers.index')->with('success', 'Phone number created successfully.');
+        return redirect()->route('admin.phone-numbers.index')
+            ->with('success', 'Phone number created successfully.');
     }
 
     public function edit(PhoneNumber $phoneNumber)
@@ -40,19 +43,24 @@ class PhoneNumberController extends Controller
     public function update(Request $request, PhoneNumber $phoneNumber)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'number' => 'required|string|max:20',
+            'name'        => 'required|string|max:255',
+            'telegram'    => 'nullable|url|max:255',
+            'viber'       => 'nullable|url|max:255',
+            'contact_url' => 'nullable|url|max:255',
             'description' => 'nullable|string',
         ]);
 
         $phoneNumber->update($request->all());
 
-        return redirect()->route('admin.phone-numbers.index')->with('success', 'Phone number updated successfully.');
+        return redirect()->route('admin.phone-numbers.index')
+            ->with('success', 'Phone number updated successfully.');
     }
 
     public function destroy(PhoneNumber $phoneNumber)
     {
         $phoneNumber->delete();
-        return redirect()->route('admin.phone-numbers.index')->with('success', 'Phone number deleted successfully.');
+
+        return redirect()->route('admin.phone-numbers.index')
+            ->with('success', 'Phone number deleted successfully.');
     }
 }
