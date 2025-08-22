@@ -14,4 +14,5 @@ Route::prefix('v1')->group(function () {
     Route::get('/apks', [DataController::class, 'apks']);
     Route::get('/phones', [DataController::class, 'phones']);
     Route::get('/booktypes', [DataController::class, 'booktypes']);
+    Route::get('language', [DataController::class, 'language']); 
 });

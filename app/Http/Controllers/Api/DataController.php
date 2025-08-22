@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -10,6 +9,7 @@ use App\Models\Pdf;
 use App\Models\BookType;
 use App\Models\PhoneNumber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class DataController extends Controller
 {
@@ -56,5 +56,35 @@ class DataController extends Controller
             'success' => true,
             'data' => $booktypes
         ]);
+    }
+
+    public function language()
+    {
+        try {
+            // Load English language file
+            $enPath = resource_path('lang/en.json');
+            $enData = File::exists($enPath) ? json_decode(File::get($enPath), true) : [];
+            
+            // Load Myanmar language file
+            $myPath = resource_path('lang/my.json');
+            $myData = File::exists($myPath) ? json_decode(File::get($myPath), true) : [];
+            
+            // Combine both languages
+            $languageData = [
+                'en' => $enData,
+                'my' => $myData
+            ];
+            
+            return response()->json([
+                'success' => true,
+                'data' => $languageData
+            ]);
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to load language files: ' . $e->getMessage()
+            ], 500);
+        }
     }
 }
