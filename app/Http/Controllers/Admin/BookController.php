@@ -30,6 +30,8 @@ class BookController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'title_mm' => 'required|string|max:255',
+            'description_mm' => 'nullable|string',
             'book_type_id' => 'required|exists:book_types,id',
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'file' => 'required|file|mimes:pdf,epub,mobi|max:10240',
@@ -45,6 +47,8 @@ class BookController extends Controller
         Book::create([
             'title' => $request->title,
             'description' => $request->description,
+            'title_mm' => $request->title_mm,
+            'description_mm' => $request->description_mm,
             'book_type_id' => $request->book_type_id,
             'cover_image' => $coverPath,
             'file_path' => $filePath,
@@ -65,6 +69,8 @@ class BookController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'title_mm' => 'required|string|max:255',
+            'description_mm' => 'nullable|string',
             'book_type_id' => 'required|exists:book_types,id',
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'file' => 'nullable|file|mimes:pdf,epub,mobi|max:10240',
@@ -87,6 +93,8 @@ class BookController extends Controller
         $book->update([
             'title' => $request->title,
             'description' => $request->description,
+            'title_mm' => $request->title_mm,
+            'description_mm' => $request->description_mm,
             'book_type_id' => $request->book_type_id,
             'cover_image' => $coverPath,
             'file_path' => $filePath,

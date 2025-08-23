@@ -5,16 +5,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create Book</div>
+                <div class="card-header">Create News</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.books.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
+                            <label for="title" class="form-label">Eng Title</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required>
                             @error('title')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="title_mm" class="form-label">MM Title</label>
+                            <input type="text" class="form-control @error('title_mm') is-invalid @enderror" id="title_mm" name="title_mm" required>
+                            @error('title_mm')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
                         <div class="mb-3">
@@ -28,9 +34,15 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="form-label">Description</label>
+                            <label for="description" class="form-label">Eng Description</label>
                             <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3"></textarea>
                             @error('description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description_mm" class="form-label">MM Description</label>
+                            <textarea class="form-control @error('description_mm') is-invalid @enderror" id="description_mm" name="description_mm" rows="3"></textarea>
+                            @error('description_mm')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
                         <div class="mb-3">

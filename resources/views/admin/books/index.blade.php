@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-between align-items-center mb-4">
         <div class="col">
-            <h2>Books</h2>
+            <h2>News</h2>
         </div>
         <div class="col-auto">
             <a href="{{ route('admin.books.create') }}" class="btn btn-primary">Create Book</a>
@@ -19,8 +19,10 @@
                     <th>ID</th>
                     <th>Cover</th>
                     <th>Title</th>
+                    <th>MM Title</th>
                     <th>Type</th>
                     <th>Description</th>
+                    <th>MM Description</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -36,8 +38,10 @@
                         @endif
                     </td>
                     <td>{{ $book->title }}</td>
+                    <td>{{ $book->title_mm }}</td>
                     <td>{{ $book->type->name }}</td>
                     <td>{{ Str::limit($book->description, 50) }}</td>
+                    <td>{{ Str::limit($book->description_mm, 50) }}</td>
                     <td>
                         <a href="{{ route('admin.books.edit', $book->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('admin.books.destroy', $book->id) }}" method="POST" class="d-inline">

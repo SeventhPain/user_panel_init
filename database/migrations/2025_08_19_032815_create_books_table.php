@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
+            $table->string('title_mm');
+            $table->text('description_mm')->nullable();
             $table->foreignId('book_type_id')->constrained();
             $table->string('cover_image')->nullable();
             $table->string('file_path');

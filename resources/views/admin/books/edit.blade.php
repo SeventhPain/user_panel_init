@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit Book</div>
+                <div class="card-header">Edit News</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.books.update', $book->id) }}" enctype="multipart/form-data">
@@ -14,8 +14,13 @@
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
+                            <label for="title" class="form-label">Eng Title</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{ $book->title }}" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="title_mm" class="form-label">MM Title</label>
+                            <input type="text" class="form-control" id="title_mm" name="title_mm" value="{{ $book->title_mm }}" required>
                         </div>
 
                         <div class="mb-3">
@@ -28,8 +33,13 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="form-label">Description</label>
+                            <label for="description" class="form-label">Eng Description</label>
                             <textarea class="form-control" id="description" name="description" rows="3">{{ $book->description }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description_mm" class="form-label">Description</label>
+                            <textarea class="form-control" id="description_mm" name="description_mm" rows="3">{{ $book->description_mm }}</textarea>
                         </div>
 
                         <div class="mb-3">
