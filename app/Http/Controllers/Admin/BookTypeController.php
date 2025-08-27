@@ -26,6 +26,8 @@ class BookTypeController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'name_mm' => 'required|string|max:255',
+            'description_mm' => 'nullable|string',
         ]);
 
         BookType::create($request->all());
@@ -44,6 +46,8 @@ class BookTypeController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'name_mm' => 'required|string|max:255',
+            'description_mm' => 'nullable|string',
         ]);
 
         $bookType->update($request->all());

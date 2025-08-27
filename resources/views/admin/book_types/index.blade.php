@@ -19,6 +19,8 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Description</th>
+                    <th>MM Name</th>
+                    <th>MM Description</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -28,6 +30,8 @@
                     <td>{{ $type->id }}</td>
                     <td>{{ $type->name }}</td>
                     <td>{{ Str::limit($type->description, 50) }}</td>
+                    <td>{{ $type->name_mm }}</td>
+                    <td>{{ Str::limit($type->description_mm, 50) }}</td>
                     <td>
                         <a href="{{ route('admin.book-types.edit', $type->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('admin.book-types.destroy', $type->id) }}" method="POST" class="d-inline">

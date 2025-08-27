@@ -23,6 +23,16 @@
                             <textarea class="form-control" id="description" name="description" rows="3">{{ $bookType->description }}</textarea>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="name_mm" class="form-label">MM Name</label>
+                            <input type="text" class="form-control" id="name_mm" name="name_mm" value="{{ $bookType->name_mm }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description_mm" class="form-label">MM Description</label>
+                            <textarea class="form-control" id="description_mm" name="description_mm" rows="3">{{ $bookType->description_mm }}</textarea>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Update</button>
                         <a href="{{ route('admin.book-types.index') }}" class="btn btn-secondary">Cancel</a>
                     </form>
